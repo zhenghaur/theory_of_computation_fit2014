@@ -1,0 +1,23 @@
+BEGIN {
+    truenegative=0;
+    falsenegative=0;
+    truepositive=0;
+    falsepositive=0;
+}
+
+{
+    if (tolower($0) ~ /^(b|ch|d|g|h|jj?|kk?|m|n|pp?|r|ss?|t(ch|t)?)?(a[eh]?|e[ou]?|i|o[eo]?|ui?|w(ae?|e|i|o)|y(ae?|eo?|o|u))(k|l|m|ng?|p|t)? (b|ch|d|g|h|jj?|kk?|m|n|pp?|r|ss?|t(ch|t)?)?(a[eh]?|e[ou]?|i|o[eo]?|ui?|w(ae?|e|i|o)|y(ae?|eo?|o|u))(k|l|m|ng?|p|t)?-?(b|ch|d|g|h|jj?|kk?|m|n|pp?|r|ss?|t(ch|t)?)?(a[eh]?|e[ou]?|i|o[eo]?|ui?|w(ae?|e|i|o)|y(ae?|eo?|o|u))(k|l|m|ng?|p|t)?:/) {
+        if ($NF ~ /Korean/) {truepositive += 1} 
+        else {falsepositive += 1}
+    } else{
+        if ($NF ~ /Korean/) {falsenegative += 1} 
+        else {truenegative += 1}
+    }
+}
+
+END {
+    print "Correct match: " truepositive
+    print "False Positive: " falsepositive
+    print "False Negative: " falsenegative
+    print "Correct Non-match: " truenegative
+}

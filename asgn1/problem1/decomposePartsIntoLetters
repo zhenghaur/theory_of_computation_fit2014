@@ -1,0 +1,3 @@
+s/<PREFIX>/(b|ch|d|g|h|jj?|kk?|m|n|pp?|r|ss?|t(ch|t)?)/g
+s/<MIDDLE>/(a[eh]?|e[ou]?|i|o[eo]?|ui?|w(ae?|e|i|o)|y(ae?|eo?|o|u))/g
+s/<SUFFIX>/(k|l|m|ng?|p|t)/g
